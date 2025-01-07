@@ -10,8 +10,8 @@ router.use(express.json())
 router.use(read)
 router.use(cookiesparse())
 router.route("/signup").post(validationRulesSignUp, isAlreadyRegistered, validateResult, createUser)
-router.route("/login").get(validationRulesLogIn, validateResult, loginUser)
+router.route("/login").post(validationRulesLogIn, validateResult, loginUser)
 router.route("/private").get(isLogin, authData)
-router.route("/admin").get(isLogin,adminData)
+router.route("/admin").get(isLogin, adminData)
 
 export default router

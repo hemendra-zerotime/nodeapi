@@ -18,18 +18,20 @@ export const read = (req: Request, res: Response, next: NextFunction) => {
 }
 
 export const newUserCreate = async (req: Request) => {
+    const { users } = req
+    let { id, username, email, password, role } = req.body
     let ID: number
-    if (req.users.length === 0)
+    if (users.length === 0)
         ID = 1
     else
-        ID = req.users[req.users.length - 1].id + 1
+        ID = users[users.length - 1].id + 1
     const saltRound = 10;
-    const hashpass = await bcrypt.hash(req.body.password, saltRound)
-    req.body.password = hashpass
-    if (req.body.role === undefined) {
-        req.body.role = "user"
+    const hashpass = await bcrypt.hash(password, saltRound)
+    password = hashpass
+    if (role === undefined) {
+        role = "user"
     }
-    let newuser = Object.assign({ id: ID }, req.body)
+    let newuser = Object.assign({ id: ID }, { username, email, password, role })
     return newuser
 }
 
@@ -46,6 +48,15 @@ export const findUser = async (req: Request) => {
         else
             return false
     }
+}
+export const findAllUser = async (req: Request, res: Response) => {
+    res.status(200).json({
+        message: "data get successfully",
+        totalUsers: req.users.length,
+        data: {
+            users: req.users,
+        },
+    });
 }
 
 

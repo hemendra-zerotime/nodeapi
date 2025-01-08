@@ -8,7 +8,7 @@ const host: string = process.env.HOST || 'localhost'
 
 const app = express();
 
-app.use("/user", router)
+app.use("/", router)
 app.listen(port, host, () => {
     console.log(`server started at http://${host}:${port}`)
 })

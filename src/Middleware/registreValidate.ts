@@ -31,7 +31,9 @@ export const validateResult = (req: Request, res: Response, next: NextFunction) 
 };
 
 export const isAlreadyRegistered = (req: Request, res: Response, next: NextFunction) => {
-    const result = req.users.find((user) => user.email === req.body.email)
+    const { email } = req.body
+    const { users } = req
+    const result = users.find((user) => user.email === email)
     if (result === undefined) {
         next()
     }

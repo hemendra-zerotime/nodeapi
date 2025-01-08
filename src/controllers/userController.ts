@@ -38,10 +38,11 @@ export const createUser = async (req: Request, res: Response) => {
         };
         const sendEmail = async (transporter: Transporter, mailOptions: SendMailOptions) => {
             try {
+                let { users } = req
                 res.status(200).json({ message: `${newUser.username} has been registered as a ${newUser.role}` })
                 await transporter.sendMail(mailOptions)
-                req.users.push(newUser)
-                fs.writeFile(file, JSON.stringify(req.users), (err) => {
+                users.push(newUser)
+                fs.writeFile(file, JSON.stringify(users), (err) => {
                     if (err) throw err
                 })
             } catch (error) {

@@ -1,10 +1,11 @@
 import express from "express"
 import { createUser } from "../controllers/userController";
 import { findAllUser, read } from "../services/userServices";
-import { isAlreadyRegistered, validateResult, validationRulesLogIn, validationRulesSignUp } from "../Middleware/registreValidate";
+import { isAlreadyRegistered, validateResult } from "../Middleware/registreValidate";
 import { loginUser } from "../Middleware/authentication";
 import { adminAuth, userAuth, isLogin } from "../Middleware/authorization";
 import cookiesparse from "cookie-parser"
+import { validationRulesLogIn, validationRulesSignUp } from "../Middleware/validationRules";
 const router = express.Router();
 router.use(express.json())
 router.use(read)

@@ -1,1 +1,16 @@
-[{"id":1,"username":"HemendraSingh","email":"hemendrasr1999@gmail.com","password":"$2b$10$g0xR4VGbxiNubSlTwOtgvOPdJGcKohC1T7Ddz/D7drxFkCHdHTMli","role":"user"},{"id":2,"username":"Hemendra","email":"hemendra.zerotimesolutions@gmail.com","password":"$2b$10$z5Y1blfi5ywc/8mXodQJUeLWq/1iFrdcdtExa54BeovcrHuhCxUtu","role":"admin"}]
+[
+    {
+        "id": 1,
+        "username": "HemendraSingh",
+        "email": "hemendrasr1999@gmail.com",
+        "password": "$2b$10$g0xR4VGbxiNubSlTwOtgvOPdJGcKohC1T7Ddz/D7drxFkCHdHTMli",
+        "role": "user"
+    },
+    {
+        "id": 2,
+        "username": "Hemendra",
+        "email": "hemendra.zerotimesolutions@gmail.com",
+        "password": "$2b$10$z5Y1blfi5ywc/8mXodQJUeLWq/1iFrdcdtExa54BeovcrHuhCxUtu",
+        "role": "admin"
+    }
+]

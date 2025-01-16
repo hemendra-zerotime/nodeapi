@@ -1,31 +1,13 @@
-import { body, validationResult } from "express-validator";
+import { validationResult } from "express-validator";
 import { NextFunction, Request, Response } from "express";
-export const validationRulesSignUp = [
-    body("username")
-        .isLength({ min: 5 })
-        .withMessage("username must be of 5 or greater than 5"),
-    body("email")
-        .isEmail()
-        .withMessage("please enter valid email"),
-    body("password")
-        .isLength({ min: 8, max: 14 })
-        .withMessage("password must be of 8 or less than 14")
-];
-export const validationRulesLogIn = [
-    body("email")
-        .isEmail()
-        .withMessage("please enter valid email"),
-    body("password")
-        .isLength({ min: 1 })
-        .withMessage("please enter password")
-];
+
 
 export const validateResult = (req: Request, res: Response, next: NextFunction) => {
     const err = validationResult(req)
-    if (!err.isEmpty()) {
+    if (err.isEmpty() == false) {
         res.status(400).json({ error: err.array() });
     }
-    else {
+    else if (err.isEmpty() == true) {
         next()
     }
 };
@@ -38,6 +20,6 @@ export const isAlreadyRegistered = (req: Request, res: Response, next: NextFunct
         next()
     }
     else {
-        res.json({ message: "The email is already registered" })
+        res.status(409).json({ message: "The email is already registered" })
     }
 }

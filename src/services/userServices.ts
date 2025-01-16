@@ -19,7 +19,7 @@ export const read = (req: Request, res: Response, next: NextFunction) => {
 
 export const newUserCreate = async (req: Request) => {
     const { users } = req
-    let { id, username, email, password, role } = req.body
+    let { username, email, password, role } = req.body
     let ID: number
     if (users.length === 0)
         ID = 1

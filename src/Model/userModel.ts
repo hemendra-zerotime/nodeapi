@@ -3,7 +3,7 @@ interface User {
     username: string,
     email: string,
     password: string,
-    role: "user" | "admin"
+    role: string
 }
 
 export default User

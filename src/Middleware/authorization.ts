@@ -2,7 +2,7 @@ import { NextFunction, Request, Response } from "express";
 import jwt from "jsonwebtoken";
 const secretKey = process.env.SECRET_KEY
 export const isLogin = async (req: Request, res: Response, next: NextFunction) => {
-    const token = req.cookies.authtoken || req.headers.authorization?.split(" ")[1]
+    const token = req.cookies.authtoken
     if (token !== undefined) {
         try {
             const decoded = await jwt.verify(`${token}`, `${secretKey}`)
